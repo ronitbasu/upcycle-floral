@@ -1,0 +1,25 @@
+.confirmation {
+  box-sizing:border-box;
+  border:1px solid #dce6f7;
+  border-radius:5px;
+  width:calc(100% - 20px);
+  margin:10px 10px 0px 10px;
+  background: #fdfeff;
+}
+.confirmation h2 {
+	text-align:center;
+	color:#1a1a66;
+}
+.confirmation img {
+	width:70%;
+	margin:5px 15%;
+}
+.confirmation .instructions {
+	width:80%;
+	margin:5px 10%;
+	font-size:16pt;
+}
+.confirmation .saved {
+	text-align:center;
+	font-size:10pt;
+}
