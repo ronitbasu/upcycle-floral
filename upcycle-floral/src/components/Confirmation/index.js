@@ -14,6 +14,9 @@ class Confirmation extends Component {
         <p className="saved">
           You saved $350.00!
         </p>
+        <SeeReservation />
+        <SearchMore />
+        <Cancel />
       </div>
     );
   }
@@ -22,7 +25,7 @@ class Confirmation extends Component {
 class SeeReservation extends Component {
   render() {
     return (
-      <div>&nbsp;</div>
+      <div className="button seereservation">See Reservation</div>
     )
   }
 }
@@ -30,7 +33,7 @@ class SeeReservation extends Component {
 class SearchMore extends Component {
   render() {
     return (
-      <div>&nbsp;</div>
+      <div className="button searchmore">Search More</div>
     )
   }
 }
@@ -38,7 +41,7 @@ class SearchMore extends Component {
 class Cancel extends Component {
   render() {
     return (
-      <div>&nbsp;</div>
+      <div className="button cancel">Cancel</div>
     )
   }
 }
