@@ -55,7 +55,11 @@ class SeeReservation extends Component {
               </tr>
               <tr>
                 <td>Original Date of Arrangement:</td>
-                <td>2/16/2019</td>
+                <td>4/16/2019</td>
+              </tr>
+              <tr>
+                <td>Pickup Address:</td>
+                <td>7033 N Moselle Ave, Chicago, IL 60646</td>
               </tr>
             </tbody>
           </table>

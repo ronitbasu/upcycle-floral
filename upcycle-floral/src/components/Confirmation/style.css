@@ -73,6 +73,7 @@
 .seereservation td:nth-child(odd) {
 	text-align:right;
 	padding: 0px 10px;
+	width:60%;
 }
 .description {
 	font-style:italic;
