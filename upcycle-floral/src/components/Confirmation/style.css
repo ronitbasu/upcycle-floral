@@ -47,3 +47,27 @@
 .cancel:hover {
 	background:#d95050;
 }
+.seereservation {
+	overflow:auto;
+	padding:15px 25px;
+	position:relative;
+}
+.seereservation span {
+	position:absolute;
+	top:13px;
+	left:35px;
+	background:#fdfeff;
+	padding:0px 5px;
+}
+.seereservation div {
+	overflow:hidden;
+	box-sizing:border-box;
+	-webkit-transition: height .3s; /* Safari */
+	transition: height .3s;
+}
+div.viewing {
+	height:50px;
+}
+div.hidden {
+	height:0px;
+}
