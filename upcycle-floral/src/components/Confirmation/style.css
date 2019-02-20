@@ -70,6 +70,9 @@
 .seereservation table {
 	margin:20px 0px;
 }
+.seereservation td {
+	vertical-align:text-top;
+}
 .seereservation td:nth-child(odd) {
 	text-align:right;
 	padding: 0px 10px;
@@ -90,12 +93,47 @@ div.hidden {
 .helperbuttons {
 	text-align:center;
 }
-.helperbuttons button {
-	border:1px solid #3232CC;
-	border-radius:10px;
-	margin:5px;
-	font-weight:bold;
-	background:none;
-	color:#3232CC;
-	box-shadow:0px 2px 2px rgba(0,0,0,.1);
+.helperbuttons .react-add-to-calendar {
+	color:black;
+	display:inline-block;
+	margin:10px;
+}
+.helperbuttons .react-add-to-calendar__wrapper {
+	border:1px solid rgba(0,0,0,.3);
+	padding:8px;
+	border-radius:2px;
+	box-shadow:0px 1px 2px rgba(0,0,0,.1);
+}
+.helperbuttons .react-add-to-calendar__dropdown {
+	border:1px solid rgba(0,0,0,.4);
+	box-shadow:0px 1px 3px rgba(0,0,0,.2);
+	margin-top:-3px;
+	background:white;
+}
+.helperbuttons .react-add-to-calendar__dropdown ul {
+	padding:0px;
+	margin:4px;
+}
+.helperbuttons .react-add-to-calendar__dropdown li {
+	list-style:none;
+	padding:3px;
+}
+.helperbuttons .react-add-to-calendar__dropdown li a {
+	text-decoration:none;
+	color:black;
+}
+.helperbuttons .react-add-to-calendar__dropdown li a:hover {
+	text-decoration:none;
+	color:black;
+	background:#ddd;
+}
+.helperbuttons .getdirections {
+	color:black;
+	display:inline-block;
+	margin:10px;
+	border:1px solid rgba(0,0,0,.3);
+	padding:8px;
+	border-radius:2px;
+	box-shadow:0px 1px 2px rgba(0,0,0,.1);
+	text-decoration:none;
 }

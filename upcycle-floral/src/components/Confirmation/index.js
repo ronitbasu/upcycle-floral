@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import './style.css';
 import staticImage from '../../static/images/lily_static.jpeg';
+import AddToCalendar from 'react-add-to-calendar';
 
 class Confirmation extends Component {
+  state = {
+    event: {
+      title: '"Birthday Blooms" Pick-Up',
+      description: 'Pickup for "Birthday Blooms"',
+      location: '7033 N Moselle Ave, Chicago, IL 60646',
+      startTime: '2019-04-21T10:00:00-06:00',
+      endTime: '2019-04-21T12:00:00-06:00',
+    }
+  };
   render() {
+    let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.event.location.replace(/ /g, "+");
     return (
       <div className="confirmation">
         <h2>Your Order</h2>
@@ -15,8 +26,9 @@ class Confirmation extends Component {
           You saved $35.00!
         </p>
         <div className="helperbuttons">
-          <AddToCalendar />
-          <GetDirections />
+          <AddToCalendar event={this.state.event}/>
+          <br />
+          <GetDirections address={google_link}/>
         </div>
         <SeeReservation />
         <SearchMore />
@@ -85,17 +97,10 @@ class Cancel extends Component {
     )
   }
 }
-class AddToCalendar extends Component {
-  render() {
-    return (
-      <button>Add to Calendar</button>
-    )
-  }
-}
 class GetDirections extends Component {
   render() {
     return (
-      <button>Get Directions</button>
+      <a className='getdirections' href={this.props.address}>Get Directions</a>
     )
   }
 }
