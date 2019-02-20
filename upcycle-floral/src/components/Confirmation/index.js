@@ -17,7 +17,7 @@ class Confirmation extends Component {
     let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.event.location.replace(/ /g, "+");
     return (
       <div className="confirmation">
-        <h2>Your Order</h2>
+        <h1>Your Order</h1>
         <img src={staticImage} />
         <p className="instructions">
           "Birthday Blooms" will be available for pickup 4/21 between 10:00am and 12:00pm.
