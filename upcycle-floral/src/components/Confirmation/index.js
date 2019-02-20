@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 import staticImage from '../../static/images/lily_static.jpeg';
 import AddToCalendar from 'react-add-to-calendar';
@@ -34,8 +35,12 @@ class Confirmation extends Component {
             <GetDirections address={google_link}/>
           </div>
           <SeeReservation />
-          <SearchMore />
-          <Cancel />
+          <Link to={`/search`} style={{textDecoration: 'none'}}>
+            <SearchMore />
+          </Link>
+          <Link to={`/search`} style={{textDecoration: 'none'}}>
+            <Cancel />
+          </Link>
         </div>
       </div>
     );
