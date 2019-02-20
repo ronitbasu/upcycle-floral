@@ -85,7 +85,10 @@ class SeeReservation extends Component {
 class SearchMore extends Component {
   render() {
     return (
-      <div className="button searchmore">Back to Search</div>
+
+      <div className="button searchmore">
+        <a class="searchmore" href="#"> Back to Search</a>
+      </div>
     )
   }
 }
@@ -93,7 +96,9 @@ class SearchMore extends Component {
 class Cancel extends Component {
   render() {
     return (
-      <div className="button cancel">Cancel</div>
+      <div className="button cancel">
+        <a class="cancel" href="#">Cancel</a>
+      </div>
     )
   }
 }
