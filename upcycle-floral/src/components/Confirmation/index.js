@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import staticImage from '../../static/images/lily_static.jpeg';
 import AddToCalendar from 'react-add-to-calendar';
+import ConfirmationBanner from '../ConfirmationBanner';
 
 class Confirmation extends Component {
   state = {
@@ -16,23 +17,26 @@ class Confirmation extends Component {
   render() {
     let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.event.location.replace(/ /g, "+");
     return (
-      <div className="confirmation">
-        <h1>Your Order</h1>
-        <img src={staticImage} />
-        <p className="instructions">
-          "Birthday Blooms" will be available for pickup 4/21 between 10:00am and 12:00pm.
-        </p>
-        <p className="saved">
-          You saved $35.00!
-        </p>
-        <div className="helperbuttons">
-          <AddToCalendar event={this.state.event}/>
-          <br />
-          <GetDirections address={google_link}/>
+      <div>
+        <ConfirmationBanner />
+        <div className="confirmation">
+          <h1>Your Order</h1>
+          <img src={staticImage} />
+          <p className="instructions">
+            "Birthday Blooms" will be available for pickup 4/21 between 10:00am and 12:00pm.
+          </p>
+          <p className="saved">
+            You saved $35.00!
+          </p>
+          <div className="helperbuttons">
+            <AddToCalendar event={this.state.event}/>
+            <br />
+            <GetDirections address={google_link}/>
+          </div>
+          <SeeReservation />
+          <SearchMore />
+          <Cancel />
         </div>
-        <SeeReservation />
-        <SearchMore />
-        <Cancel />
       </div>
     );
   }

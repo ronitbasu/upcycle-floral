@@ -9,8 +9,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ConfirmationBanner />
-        <Confirmation />
+        {this.props.children}
       </div>
     );
   }
