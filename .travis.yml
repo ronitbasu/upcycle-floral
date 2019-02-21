@@ -6,6 +6,8 @@ cache:
   directories:
     - $HOME/.npm
 
+warnings_are_errors: false
+
 before_install:
   - npm ci
 
