@@ -112,7 +112,7 @@ class Cancel extends Component {
   render() {
     return (
       <div className="button cancel">
-        <a className="cancel" href="#">Cancel</a>
+        <a className="cancel" href="#">Cancel Reservation</a>
       </div>
     )
   }
