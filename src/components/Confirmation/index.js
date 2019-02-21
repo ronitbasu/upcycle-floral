@@ -41,7 +41,6 @@ class Confirmation extends Component {
           </p>
           <div className="helperbuttons">
             <AddToCalendar event={event}/>
-            <br />
             <GetDirections address={google_link}/>
             <Cancel />
           </div>
