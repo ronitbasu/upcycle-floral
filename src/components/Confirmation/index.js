@@ -45,7 +45,6 @@ class Confirmation extends Component {
             <GetDirections address={google_link}/>
           </div>
           <SeeReservation data={this.state}/>
-          <SearchMore />
           <Cancel />
         </div>
       </div>
