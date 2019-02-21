@@ -1,0 +1,31 @@
+.search {
+	box-sizing:border-box;
+	position:relative;
+	border:1px solid #dce6f7;
+	border-radius:5px;
+	width:calc(100% - 20px);
+	margin:10px 10px 0px 10px;
+	background: #fdfeff;
+	padding-bottom:15px;
+	text-align:center;
+}
+.search h1 {
+	text-align:center;
+	color:#1a1a66;
+	display:inline-block;
+	padding:4px;
+	border-bottom:2px solid #1a1a66;
+}
+.searchbar {
+  position: relative;
+  padding: 5px;
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.searchbut {
+	background:#323fd6;
+}

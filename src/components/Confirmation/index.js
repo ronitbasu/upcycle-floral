@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 import staticImage from '../../static/images/lily_static.jpeg';
 import AddToCalendar from 'react-add-to-calendar';
@@ -101,7 +102,7 @@ class SearchMore extends Component {
     return (
 
       <div className="button searchmore">
-        <a class="searchmore" href="#"> Back to Search</a>
+        <a className="searchmore" href="#"> Back to Search</a>
       </div>
     )
   }
@@ -111,7 +112,7 @@ class Cancel extends Component {
   render() {
     return (
       <div className="button cancel">
-        <a class="cancel" href="#">Cancel</a>
+        <a className="cancel" href="#">Cancel</a>
       </div>
     )
   }
