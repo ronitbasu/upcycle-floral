@@ -43,9 +43,9 @@ class Confirmation extends Component {
             <AddToCalendar event={event}/>
             <br />
             <GetDirections address={google_link}/>
+            <Cancel />
           </div>
           <SeeReservation data={this.state}/>
-          <Cancel />
         </div>
       </div>
     );
