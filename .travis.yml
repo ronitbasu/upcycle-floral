@@ -6,10 +6,13 @@ cache:
   directories:
     - $HOME/.npm
 
+before_install:
+  - npm ci
+
 install: true
 
 script:
-  - npm run build
+  - CI=false npm run build
 
 deploy:
   provider: firebase
