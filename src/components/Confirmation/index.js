@@ -13,8 +13,8 @@ class Confirmation extends Component {
     startTime: new Date('2019-04-21T10:00:00-05:00'),
     endTime: new Date('2019-04-21T12:00:00-05:00'),
     currency: "$",
-    originalValue: 49.99,
-    purchaseValue: 14.99,
+    originalValue: 35,
+    purchaseValue: 0,
     originalDate: new Date('2019-04-16'),
     numberOfFlowers: 50,
   };
@@ -41,12 +41,10 @@ class Confirmation extends Component {
           </p>
           <div className="helperbuttons">
             <AddToCalendar event={event}/>
-            <br />
             <GetDirections address={google_link}/>
+            <Cancel />
           </div>
           <SeeReservation data={this.state}/>
-          <SearchMore />
-          <Cancel />
         </div>
       </div>
     );
