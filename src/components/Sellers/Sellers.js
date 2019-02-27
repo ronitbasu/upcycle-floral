@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './../Header/index.js';
 import './style.css';
+import staticImage from '../../static/images/lily_static.jpeg';
+import AddToCalendar from 'react-add-to-calendar';
+import ConfirmationBanner from '../ConfirmationBanner';
+import Dropzone from 'react-dropzone';
 
 class Sellers extends Component {
   state = {
@@ -27,9 +30,12 @@ class Sellers extends Component {
     };
     return (
       <div>
-        <ConfirmationBanner />
         <div className="confirmation">
-          <h1>Your Order</h1>
+          <h1>Create an Order</h1>
+
+          <p>Upload a photo of your flowers</p>
+          <input type="file" accept="image"/>
+
           <img src={staticImage} alt="staticImage"/>
           <p className="instructions">
             "{this.state.title}" will be available for pickup {this.state.startTime.getMonth()+1}/{this.state.startTime.getDate()} between {((this.state.startTime.getHours()-1)%12)+1}:{this.state.startTime.getMinutes()<10?"0"+this.state.startTime.getMinutes():this.state.startTime.getMinutes()}{this.state.startTime.getHours()>11?"pm":"am"} and {((this.state.endTime.getHours()-1)%12)+1}:{this.state.endTime.getMinutes()<10?"0"+this.state.endTime.getMinutes():this.state.endTime.getMinutes()}{this.state.endTime.getHours()>11?"pm":"am"}.
@@ -47,9 +53,9 @@ class Sellers extends Component {
       </div>
     );
   }
-  }
+}
 
-  class SeeReservation extends Component {
+class SeeReservation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,9 +97,9 @@ class Sellers extends Component {
       </div>
     )
   }
-  }
+}
 
-  class SearchMore extends Component {
+class SearchMore extends Component {
   render() {
     return (
 
@@ -102,9 +108,9 @@ class Sellers extends Component {
       </div>
     )
   }
-  }
+}
 
-  class Cancel extends Component {
+class Cancel extends Component {
   render() {
     return (
       <div className="button cancel">
@@ -112,13 +118,12 @@ class Sellers extends Component {
       </div>
     )
   }
-  }
-  class GetDirections extends Component {
+}
+class GetDirections extends Component {
   render() {
     return (
       <a className='getdirections' href={this.props.address}>Get Directions</a>
     )
-  }
   }
 }
 

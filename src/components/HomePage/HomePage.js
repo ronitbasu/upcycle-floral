@@ -7,9 +7,13 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>Im the HomePage</p>
+        <p>This is where listings will appear!</p>
         <Link to={`/confirmation`} style={{textDecoration: 'none'}}>
           Click here for confirmation Page!
+        </Link>
+        <br/>
+        <Link to={`/sellers`} style={{textDecoration: 'none'}}>
+          Click here to create a listing!
         </Link>
       </div>
     );
