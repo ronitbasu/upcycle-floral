@@ -5,6 +5,8 @@ import staticImage from '../../static/images/lily_static.jpeg';
 import AddToCalendar from 'react-add-to-calendar';
 import ConfirmationBanner from '../ConfirmationBanner';
 import Dropzone from 'react-dropzone';
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 class Sellers extends Component {
   state = {
@@ -60,6 +62,9 @@ class Sellers extends Component {
                 <option value="50+">50+</option>
               </select>
             </label>
+            <br />
+            <DayPicker />
+            <br />
             <input type="submit" value="Submit" />
           </form>
 
