@@ -73,6 +73,7 @@ class Sellers extends Component {
               onDayClick={this.handleDateSelection}
               month={this.state.startTime}
               selectedDays={[this.state.dateRange, this.state.dateRange.from]}
+              disabledDays={{before: new Date()}}
             />
             <br />
             <input type="submit" value="Submit" />
