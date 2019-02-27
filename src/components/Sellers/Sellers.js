@@ -6,6 +6,8 @@ import AddToCalendar from 'react-add-to-calendar';
 import ConfirmationBanner from '../ConfirmationBanner';
 import Dropzone from 'react-dropzone';
 import ImageUploader from 'react-images-upload';
+import DayPicker, { DateUtils } from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 class Sellers extends Component {
 
@@ -15,14 +17,16 @@ class Sellers extends Component {
        title: "Birthday Blooms",
        description: 'This bright arrangement is perfect as a great party centerpiece or to send to a loved one far away.',
        location: '7033 N Moselle Ave, Chicago, IL 60646',
-       startTime: new Date('2019-04-21T10:00:00-05:00'),
-       endTime: new Date('2019-04-21T12:00:00-05:00'),
        currency: "$",
        originalValue: 35,
        purchaseValue: 0,
        originalDate: new Date('2019-04-16'),
        numberOfFlowers: 50,
        pictures: [],
+        dateRange: {
+          from: null,
+          to: null,
+        }
      };
      this.onDrop = this.onDrop.bind(this);
   }
@@ -35,14 +39,18 @@ class Sellers extends Component {
   }
 
   render() {
-    let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.location.replace(/ /g, "+");
-    let event = {
-      title: `"${this.state.title}" Pickup`,
-      description: `Pickup for "${this.state.title}"`,
-      location: this.state.location,
-      startTime: this.state.startTime.toISOString(),
-      endTime: this.state.endTime.toISOString(),
-    };
+    if (false) {
+      // Seems to be code for future — Jon
+      let { from: startTime, to: endTime } = this.state.dateRange;
+      let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.location.replace(/ /g, "+");
+      let event = {
+        title: `"${this.state.title}" Pickup`,
+        description: `Pickup for "${this.state.title}"`,
+        location: this.state.location,
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+      };
+    }
     return (
       <div>
         <div className="confirmation">
@@ -80,6 +88,14 @@ class Sellers extends Component {
                 <option value="50+">50+</option>
               </select>
             </label>
+            <br />
+            <DayPicker
+              onDayClick={this.handleDateSelection}
+              month={this.state.startTime}
+              selectedDays={[this.state.dateRange, this.state.dateRange.from]}
+              disabledDays={{before: new Date()}}
+            />
+            <br />
             <input type="submit" value="Submit" />
           </form>
 
@@ -90,6 +106,17 @@ class Sellers extends Component {
         </div>
       </div>
     );
+  }
+
+  handleDateSelection = day => {
+    let { dateRange } = this.state;
+    if (!dateRange.from || (dateRange.from && dateRange.to)) {
+      this.setState({ dateRange: { from: day, to: null } })
+    } else {
+      this.setState({
+        dateRange: DateUtils.addDayToRange(day, dateRange)
+      })
+    }
   }
 }
 
