@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.8.2",
     "react-add-to-calendar": "^0.1.5",
+    "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.2",
     "react-dropzone": "^9.0.0",
     "react-router-dom": "^4.3.1",
