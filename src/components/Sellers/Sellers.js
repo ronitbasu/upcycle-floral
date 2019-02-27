@@ -5,20 +5,35 @@ import staticImage from '../../static/images/lily_static.jpeg';
 import AddToCalendar from 'react-add-to-calendar';
 import ConfirmationBanner from '../ConfirmationBanner';
 import Dropzone from 'react-dropzone';
+import ImageUploader from 'react-images-upload';
 
 class Sellers extends Component {
-  state = {
-    title: "Birthday Blooms",
-    description: 'This bright arrangement is perfect as a great party centerpiece or to send to a loved one far away.',
-    location: '7033 N Moselle Ave, Chicago, IL 60646',
-    startTime: new Date('2019-04-21T10:00:00-05:00'),
-    endTime: new Date('2019-04-21T12:00:00-05:00'),
-    currency: "$",
-    originalValue: 35,
-    purchaseValue: 0,
-    originalDate: new Date('2019-04-16'),
-    numberOfFlowers: 50,
-  };
+
+  constructor(props) {
+    super(props);
+     this.state = {
+       title: "Birthday Blooms",
+       description: 'This bright arrangement is perfect as a great party centerpiece or to send to a loved one far away.',
+       location: '7033 N Moselle Ave, Chicago, IL 60646',
+       startTime: new Date('2019-04-21T10:00:00-05:00'),
+       endTime: new Date('2019-04-21T12:00:00-05:00'),
+       currency: "$",
+       originalValue: 35,
+       purchaseValue: 0,
+       originalDate: new Date('2019-04-16'),
+       numberOfFlowers: 50,
+       pictures: [],
+     };
+     this.onDrop = this.onDrop.bind(this);
+  }
+
+  onDrop(pictureFiles, pictureDataURLs) {
+    console.log(pictureFiles);
+		this.setState({
+        pictures: this.state.pictures.concat(pictureFiles),
+    });
+  }
+
   render() {
     let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.location.replace(/ /g, "+");
     let event = {
@@ -32,10 +47,15 @@ class Sellers extends Component {
       <div>
         <div className="confirmation">
           <h1>Create a Listing</h1>
-
-          <p>Upload a photo of your flowers</p>
-          <input type="file" accept="image"/>
-
+          <ImageUploader
+                	withIcon={true}
+                	buttonText='Upload pictures of your flowers'
+                	onChange={this.onDrop}
+                	imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                	maxFileSize={5242880}
+                  withPreview={true}
+                  label='Max file size: 5mb, Accepted: .jpg | .png | .gif'
+            />
           <p className="saved">
             Please select the flower type, quantity, and potential pickup dates below
           </p>
