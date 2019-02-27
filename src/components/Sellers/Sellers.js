@@ -31,71 +31,45 @@ class Sellers extends Component {
     return (
       <div>
         <div className="confirmation">
-          <h1>Create an Order</h1>
+          <h1>Create a Listing</h1>
 
           <p>Upload a photo of your flowers</p>
           <input type="file" accept="image"/>
 
-          <img src={staticImage} alt="staticImage"/>
-          <p className="instructions">
-            "{this.state.title}" will be available for pickup {this.state.startTime.getMonth()+1}/{this.state.startTime.getDate()} between {((this.state.startTime.getHours()-1)%12)+1}:{this.state.startTime.getMinutes()<10?"0"+this.state.startTime.getMinutes():this.state.startTime.getMinutes()}{this.state.startTime.getHours()>11?"pm":"am"} and {((this.state.endTime.getHours()-1)%12)+1}:{this.state.endTime.getMinutes()<10?"0"+this.state.endTime.getMinutes():this.state.endTime.getMinutes()}{this.state.endTime.getHours()>11?"pm":"am"}.
-          </p>
           <p className="saved">
-            You saved {this.state.currency}{(this.state.originalValue-this.state.purchaseValue).toFixed(2)}!
+            Please select the flower type, quantity, and potential pickup dates below
           </p>
+
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Flower Type:
+              <select>
+                <option value="Roses">Roses</option>
+                <option value="Tulips">Tulips</option>
+                <option value="Dandylions">Dandylions</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <br/>
+            <label>
+              Quantity:
+              <select>
+                <option value="1-12">1-12</option>
+                <option value="12-25">12-25</option>
+                <option value="25-50">25-50</option>
+                <option value="50+">50+</option>
+              </select>
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+
           <div className="helperbuttons">
-            <AddToCalendar event={event}/>
-            <GetDirections address={google_link}/>
+            <SubmitListing/>
             <Cancel />
           </div>
-          <SeeReservation data={this.state}/>
         </div>
       </div>
     );
-  }
-}
-
-class SeeReservation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      minimize:true
-    };
-    this.toggle = this.toggle.bind(this);
-  }
-  toggle() {
-    this.setState({minimize:(!this.state.minimize)});
-  };
-  render() {
-    return (
-      <div className="seereservation">
-        <hr />
-        <span className="expander" onClick={() => {this.toggle();}}>{this.state.minimize?"▶ Expand":"▼ Hide"} Details</span>
-        <div className={this.state.minimize?"hidden":"viewing"}>
-          <table>
-            <tbody>
-              <tr>
-                <td>Number of Flowers:</td>
-                <td>{this.props.data.numberOfFlowers}</td>
-              </tr>
-              <tr>
-                <td>Original value:</td>
-                <td>{this.props.data.currency}{this.props.data.originalValue.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>Original Date of Arrangement:</td>
-                <td>{this.props.data.originalDate.getMonth()+1}/{this.props.data.originalDate.getDate()+1}/{this.props.data.originalDate.getFullYear()}</td>
-              </tr>
-              <tr>
-                <td>Pickup Address:</td>
-                <td>{this.props.data.location}</td>
-              </tr>
-            </tbody>
-          </table>
-          <span className="description">{this.props.data.description}</span>
-        </div>
-      </div>
-    )
   }
 }
 
@@ -114,15 +88,15 @@ class Cancel extends Component {
   render() {
     return (
       <div className="button cancel">
-        <a className="cancel" href="/">Cancel Reservation</a>
+        <a className="cancel" href="/">Go Back to Search</a>
       </div>
     )
   }
 }
-class GetDirections extends Component {
+class SubmitListing extends Component {
   render() {
     return (
-      <a className='getdirections' href={this.props.address}>Get Directions</a>
+      <a className='getdirections'>Submit Listing</a>
     )
   }
 }
