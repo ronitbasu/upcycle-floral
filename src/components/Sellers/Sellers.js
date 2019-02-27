@@ -63,7 +63,13 @@ class Sellers extends Component {
               </select>
             </label>
             <br />
-            <DayPicker />
+            <DayPicker
+              onDayChange={this.handleDateSelection}
+              selectedDays={[{
+                after: this.state.startTime,
+                before: this.state.endTime,
+              }]}
+            />
             <br />
             <input type="submit" value="Submit" />
           </form>
@@ -75,6 +81,10 @@ class Sellers extends Component {
         </div>
       </div>
     );
+  }
+
+  handleDateSelection = day => {
+    console.log(day);
   }
 }
 
