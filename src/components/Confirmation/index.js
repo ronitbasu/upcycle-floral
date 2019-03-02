@@ -6,18 +6,35 @@ import AddToCalendar from 'react-add-to-calendar';
 import ConfirmationBanner from '../ConfirmationBanner';
 
 class Confirmation extends Component {
-  state = {
-    title: "Birthday Blooms",
-    description: 'This bright arrangement is perfect as a great party centerpiece or to send to a loved one far away.',
-    location: '7033 N Moselle Ave, Chicago, IL 60646',
-    startTime: new Date('2019-04-21T10:00:00-05:00'),
-    endTime: new Date('2019-04-21T12:00:00-05:00'),
-    currency: "$",
-    originalValue: 35,
-    purchaseValue: 0,
-    originalDate: new Date('2019-04-16'),
-    numberOfFlowers: 50,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "Birthday Blooms",
+      description: 'This bright arrangement is perfect as a great party centerpiece or to send to a loved one far away.',
+      location: '7033 N Moselle Ave, Chicago, IL 60646',
+      startTime: new Date('2019-04-21T10:00:00-05:00'),
+      endTime: new Date('2019-04-21T12:00:00-05:00'),
+      currency: "$",
+      originalValue: 35,
+      purchaseValue: 0,
+      originalDate: new Date('2019-04-16'),
+      numberOfFlowers: 50,
+      showBanner: true
+    };
+  }
+
+  componentWillMount = () => {
+    if (localStorage.getItem('showBanner') && this.state.showBanner) {
+      this.setState({'showBanner': false})
+    }
+  }
+
+  componentDidMount = () => {
+    if (!localStorage.getItem('showBanner')) {
+      localStorage.setItem('showBanner', 'False');
+    }
+  }
+
   render() {
     let google_link = "https://www.google.com/maps/search/?api=1&query=" + this.state.location.replace(/ /g, "+");
     let event = {
@@ -29,7 +46,7 @@ class Confirmation extends Component {
     };
     return (
       <div>
-        <ConfirmationBanner />
+        {this.state.showBanner && <ConfirmationBanner />}
         <div className="confirmation">
           <h1>Your Order</h1>
           <img src={staticImage} alt="staticImage"/>
