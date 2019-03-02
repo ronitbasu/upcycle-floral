@@ -36,7 +36,7 @@ class Sellers extends Component {
   }
 
   componentWillMount = () => {
-    this.setState({flowerTypes: [[FlowerTypeSelection,'type1']]});
+    this.setState({flowerTypes: ['type1']});
   }
 
   onDrop(pictureFiles, pictureDataURLs) {
@@ -50,7 +50,7 @@ class Sellers extends Component {
     let currTypes = this.state.flowerTypes;
     let currCount = this.state.count;
     let newKey = 'type' + (currCount + 1);
-    this.setState({ flowerTypes : currTypes.concat([[FlowerTypeSelection,newKey]]), count: currCount + 1});
+    this.setState({ flowerTypes : currTypes.concat([newKey]), count: currCount + 1});
   }
 
   removeFlowerType = (index) => {
@@ -92,8 +92,27 @@ class Sellers extends Component {
 
           <form onSubmit={this.handleSubmit}>
             {this.state.flowerTypes.map( (type, index) => (
-              <div key={type[1]}>
-                {type[0](index,this.removeFlowerType)}
+              <div key={type}>
+                <label>
+                  Flower Type:
+                  <select>
+                    <option value="Roses">Roses</option>
+                    <option value="Tulips">Tulips</option>
+                    <option value="Dandylions">Dandylions</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label> &emsp;
+                <label>
+                  Quantity:
+                  <select>
+                    <option value="1-12">1-12</option>
+                    <option value="12-25">12-25</option>
+                    <option value="25-50">25-50</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </label>
+                &emsp; <span onClick={() => this.removeFlowerType(index)} className="removeFlowerType">X</span>
+                <br />
               </div>
             ))}
             <p id="addFlowers" onClick={this.addFlowerType}> + Add another flower type </p>
