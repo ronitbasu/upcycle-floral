@@ -48,20 +48,17 @@ class Confirmation extends Component {
       <div>
         {this.state.showBanner && <ConfirmationBanner />}
         <div className="confirmation">
-          <h1>Your Order</h1>
+          <h1>Your Gift</h1>
           <img src={staticImage} alt="staticImage"/>
           <p className="instructions">
             "{this.state.title}" will be available for pickup {this.state.startTime.getMonth()+1}/{this.state.startTime.getDate()} between {((this.state.startTime.getHours()-1)%12)+1}:{this.state.startTime.getMinutes()<10?"0"+this.state.startTime.getMinutes():this.state.startTime.getMinutes()}{this.state.startTime.getHours()>11?"pm":"am"} and {((this.state.endTime.getHours()-1)%12)+1}:{this.state.endTime.getMinutes()<10?"0"+this.state.endTime.getMinutes():this.state.endTime.getMinutes()}{this.state.endTime.getHours()>11?"pm":"am"}.
           </p>
-          <p className="saved">
-            You saved {this.state.currency}{(this.state.originalValue-this.state.purchaseValue).toFixed(2)}!
-          </p>
+          <SeeReservation data={this.state}/>
           <div className="helperbuttons">
             <AddToCalendar event={event}/>
             <GetDirections address={google_link}/>
             <Cancel />
           </div>
-          <SeeReservation data={this.state}/>
         </div>
       </div>
     );
@@ -90,10 +87,6 @@ class SeeReservation extends Component {
               <tr>
                 <td>Number of Flowers:</td>
                 <td>{this.props.data.numberOfFlowers}</td>
-              </tr>
-              <tr>
-                <td>Original value:</td>
-                <td>{this.props.data.currency}{this.props.data.originalValue.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Original Date of Arrangement:</td>
