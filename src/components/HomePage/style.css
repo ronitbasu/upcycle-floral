@@ -24,12 +24,7 @@ div p {
 }
 
 .filters {
-	height:70px;
-	width:calc(100% - 10px);
-	margin:5px;
-	background:white;
-	border:1px solid #ddd;
-	box-shadow:0px 0px 2px rgba(0,0,0,.1);
+	padding:10px;
 }
 
 .listing {
@@ -42,4 +37,18 @@ div p {
 	background: #fdfeff;
 	padding-bottom:15px;
 	text-align:center;
+}
+.listing h2 {
+	color:#1a1a66;
+}
+.listing img {
+	max-height:200px;
+}
+.listing p {
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-size:11pt;
+	font-style:italic;
+	color:#331313;
 }
