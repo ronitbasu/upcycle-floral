@@ -161,6 +161,17 @@ a.cancel{
 	text-decoration: none;
 }
 
+#addFlowers:hover {
+	cursor: pointer;
+}
+
+.removeFlowerType {
+	color: red;
+}
+
+.removeFlowerType:hover {
+	cursor: pointer;
+}
 /* Old styling for add-to-calendar and get-direction buttons
 
 
