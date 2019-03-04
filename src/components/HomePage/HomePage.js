@@ -10,7 +10,6 @@ class HomePage extends Component {
         <Link to={`/sellers`} className="home_link" style={{textDecoration: 'none'}}>
           Add a listing!
         </Link>
-        <Filters />
         <Shelf />
         <Link to={`/confirmation`} className="home_link">
           Click here for confirmation Page!
@@ -24,10 +23,30 @@ class HomePage extends Component {
 }
 
 class Filters extends Component {
+  // NEED TO ADD FUNCTIONALITY OF SELECTING CHECKBOXES
+  constructor(props) {
+    super(props);
+    this.state = {
+      expandFlowerType:false
+    };
+    this.flowerTypeToggle = this.flowerTypeToggle.bind(this);
+  }
+  flowerTypeToggle() {
+    this.setState({expandFlowerType:(!this.state.expandFlowerType)});
+  };
   render() {
+    let flowerTypeRows = [];
+    for (var i = 0; i < this.props.availableFilters.flowerTypes.length; i++) {
+      flowerTypeRows.push(
+        <li><input type="checkbox" value={this.props.availableFilters.flowerTypes[i]} /> {this.props.availableFilters.flowerTypes[i]}</li>
+      );
+    }
     return (
       <div className="filters">
-      Filters Go Here
+        <div className='filter'>
+          <span onClick={() => this.flowerTypeToggle()}>{(this.props.filters.flowerType.length==0)?"Flower Type":this.props.filters.flowerType.join(", ")}</span>
+          <ul className={this.state.expandFlowerType?"expand":"hidden"}>{flowerTypeRows}</ul>
+        </div>
       </div>
     );
   }
@@ -46,9 +65,47 @@ class Shelf extends Component {
           endTime: new Date('2019-04-21T12:00:00-05:00'),
           originalDate: new Date('2019-04-16'),
           numberOfFlowers: 50,
+          flowers: [
+            {
+              type: "Roses",
+              number: 15
+            }, {
+              type: "Carnations",
+              number: 20
+            }, {
+              type: "Mums",
+              number: 15
+            }
+          ],
           image:'lily_static.jpeg'
         }
-      ]
+      ],
+      filters: {
+        flowerType: []
+      },
+      availableFilters: {
+        flowerTypes: []
+      }
+    };
+    this.addFlowerType = this.addFlowerType(this);
+    this.removeFlowerType = this.removeFlowerType(this);
+  }
+  addFlowerType() {
+    let stateCopy = this.state;
+  }
+  removeFlowerType() {
+    let stateCopy = this.state;
+  }
+  componentDidMount = () => { // This function gets a list of available flower types from the catalog
+    for (let i = 0; i < this.state.catalog.length; i++) {
+      for (let j = 0; j < this.state.catalog[i].flowers.length; j++) {
+        if (this.state.availableFilters.flowerTypes.findIndex((flower) => {return this.state.catalog[i].flowers[j].type == flower;}) == -1) {
+          // Flower has not been seen yet, add it to available filter
+          let stateCopy = this.state;
+          stateCopy.availableFilters.flowerTypes.push(this.state.catalog[i].flowers[j].type);
+          this.setState(stateCopy);
+        }
+      }
     }
   }
   render() {
@@ -56,12 +113,13 @@ class Shelf extends Component {
     for (let i = 0; i < this.state.catalog.length; i++) {
       // Filtering will happen here
       rows.push(
-        <Listing data={this.state.catalog[i]} />
+        <Listing data={this.state.catalog[i]} availableFilters={this.state.availableFilters} />
       );
     }
     
     return (
       <div className="shelf">
+        <Filters filters={this.state.filters} availableFilters={this.state.availableFilters}/>
         {rows}
       </div>
     );
