@@ -12,10 +12,10 @@ class HomePage extends Component {
           Click here for confirmation Page!
         </Link>
         <br/>
-        <span id="showBanner" onClick={()=>localStorage.clear()}> Click to make banner appear for confirmation page </span>
+        <p id="showBanner" onClick={()=>localStorage.clear()}> Click to make banner appear for confirmation page </p>
         <br/>
         <Link to={`/sellers`} className="home_link" style={{textDecoration: 'none'}}>
-          Click here to create a listing!]
+          Click here to create a listing!
         </Link>
       </div>
     );
