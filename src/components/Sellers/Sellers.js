@@ -22,13 +22,21 @@ class Sellers extends Component {
        purchaseValue: 0,
        originalDate: new Date('2019-04-16'),
        numberOfFlowers: 50,
+       flowerTypes: [],
+       count: 1,
        pictures: [],
-        dateRange: {
-          from: null,
-          to: null,
-        }
+       dateRange: {
+        from: null,
+        to: null,
+       }
      };
      this.onDrop = this.onDrop.bind(this);
+     this.addFlowerType = this.addFlowerType.bind(this);
+     this.removeFlowerType = this.removeFlowerType.bind(this);
+  }
+
+  componentWillMount = () => {
+    this.setState({flowerTypes: ['type1']});
   }
 
   onDrop(pictureFiles, pictureDataURLs) {
@@ -36,6 +44,20 @@ class Sellers extends Component {
 		this.setState({
         pictures: this.state.pictures.concat(pictureFiles),
     });
+  }
+
+  addFlowerType = () => {
+    let currTypes = this.state.flowerTypes;
+    let currCount = this.state.count;
+    let newKey = 'type' + (currCount + 1);
+    this.setState({ flowerTypes : currTypes.concat([newKey]), count: currCount + 1});
+  }
+
+  removeFlowerType = (index) => {
+    let currTypes = this.state.flowerTypes;
+    let left = currTypes.slice(0,index);
+    let right = currTypes.slice(index+1);
+    this.setState({ flowerTypes: left.concat(right)});
   }
 
   render() {
@@ -69,26 +91,31 @@ class Sellers extends Component {
           </p>
 
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Flower Type:
-              <select>
-                <option value="Roses">Roses</option>
-                <option value="Tulips">Tulips</option>
-                <option value="Dandylions">Dandylions</option>
-                <option value="Other">Other</option>
-              </select>
-            </label>
-            <br/>
-            <label>
-              Quantity:
-              <select>
-                <option value="1-12">1-12</option>
-                <option value="12-25">12-25</option>
-                <option value="25-50">25-50</option>
-                <option value="50+">50+</option>
-              </select>
-            </label>
-            <br />
+            {this.state.flowerTypes.map( (type, index) => (
+              <div key={type}>
+                <label>
+                  Flower Type:
+                  <select>
+                    <option value="Roses">Roses</option>
+                    <option value="Tulips">Tulips</option>
+                    <option value="Dandylions">Dandylions</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label> &emsp;
+                <label>
+                  Quantity:
+                  <select>
+                    <option value="1-12">1-12</option>
+                    <option value="12-25">12-25</option>
+                    <option value="25-50">25-50</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </label>
+                &emsp; <span onClick={() => this.removeFlowerType(index)} className="removeFlowerType">X</span>
+                <br />
+              </div>
+            ))}
+            <p id="addFlowers" onClick={this.addFlowerType}> + Add another flower type </p>
             <DayPicker
               onDayClick={this.handleDateSelection}
               month={this.state.startTime}
@@ -96,7 +123,6 @@ class Sellers extends Component {
               disabledDays={{before: new Date()}}
             />
             <br />
-            <input type="submit" value="Submit" />
           </form>
 
           <div className="helperbuttons">
@@ -119,6 +145,32 @@ class Sellers extends Component {
     }
   }
 }
+
+const FlowerTypeSelection = (index, remove) => {
+  return (
+    <div>
+      <label>
+        Flower Type:
+        <select>
+          <option value="Roses">Roses</option>
+          <option value="Tulips">Tulips</option>
+          <option value="Dandylions">Dandylions</option>
+          <option value="Other">Other</option>
+        </select>
+      </label> &emsp;
+      <label>
+        Quantity:
+        <select>
+          <option value="1-12">1-12</option>
+          <option value="12-25">12-25</option>
+          <option value="25-50">25-50</option>
+          <option value="50+">50+</option>
+        </select>
+      </label>
+      &emsp; <span onClick={() => remove(index)} className="removeFlowerType">X</span>
+      <br />
+    </div>
+)};
 
 class SearchMore extends Component {
   render() {

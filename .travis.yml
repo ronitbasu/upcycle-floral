@@ -6,10 +6,8 @@ cache:
   directories:
     - $HOME/.npm
 
-before_install:
+install:
   - npm ci
-
-install: true
 
 script:
   - CI=false npm run build
