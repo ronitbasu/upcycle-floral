@@ -54,6 +54,7 @@ class Filters extends Component {
     }
     return (
       <div className="filters">
+        Filter by<br />
         <div className='filter'>
           <span onClick={() => this.flowerTypeToggle()}>{(this.props.filters.flowerType.length==0)?"Flower Type":this.props.filters.flowerType.join(", ")}</span>
           <ul className={this.state.expandFlowerType?"expand":"hidden"}>{flowerTypeRows}</ul>
@@ -151,10 +152,18 @@ class Shelf extends Component {
   render() {
     let rows = [];
     for (let i = 0; i < this.state.catalog.length; i++) {
-      // Filtering will happen here
-      rows.push(
-        <Listing data={this.state.catalog[i]} availableFilters={this.state.availableFilters} />
-      );
+      let display = false;
+      for (let j = 0; j < this.state.filters.flowerType.length; j++) {
+        if (this.state.catalog[i].flowers.findIndex((flower) => {return flower.type == this.state.filters.flowerType[j];}) != -1) {
+          display = true; // We have certain flower, will display
+          break;
+        }
+      }
+      if (display || this.state.filters.flowerType == 0) {
+        rows.push(
+          <Listing data={this.state.catalog[i]} availableFilters={this.state.availableFilters} />
+        );
+      }
     }
     
     return (

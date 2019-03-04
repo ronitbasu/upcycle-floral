@@ -59,6 +59,7 @@ div p {
 	padding:4px;
 	cursor:pointer;
 	position:relative;
+	margin:3px;
 }
 .filter span {
 	display:block;
