@@ -7,14 +7,14 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>This is where listings will appear!</p>
-        <Link to={`/confirmation`} style={{textDecoration: 'none'}}>
+        <p>There are no listings at this time</p>
+        <Link to={`/confirmation`} className="home_link">
           Click here for confirmation Page!
         </Link>
         <br/>
-        <span id="showBanner" onClick={()=>localStorage.clear()}> Click to make banner appear for confirmation page </span>
+        <p id="showBanner" onClick={()=>localStorage.clear()}> Click to make banner appear for confirmation page </p>
         <br/>
-        <Link to={`/sellers`} style={{textDecoration: 'none'}}>
+        <Link to={`/sellers`} className="home_link" style={{textDecoration: 'none'}}>
           Click here to create a listing!
         </Link>
       </div>
