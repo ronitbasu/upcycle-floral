@@ -30,15 +30,26 @@ class Filters extends Component {
       expandFlowerType:false
     };
     this.flowerTypeToggle = this.flowerTypeToggle.bind(this);
+    this.handleEditFlowerType = this.handleEditFlowerType.bind(this);
   }
   flowerTypeToggle() {
     this.setState({expandFlowerType:(!this.state.expandFlowerType)});
   };
+  handleEditFlowerType(flower) {
+    this.props.onEditFlowerType(flower);
+  };
   render() {
     let flowerTypeRows = [];
     for (var i = 0; i < this.props.availableFilters.flowerTypes.length; i++) {
+      let flower = this.props.availableFilters.flowerTypes[i];
       flowerTypeRows.push(
-        <li><input type="checkbox" value={this.props.availableFilters.flowerTypes[i]} /> {this.props.availableFilters.flowerTypes[i]}</li>
+        <li>
+          <input
+            type="checkbox"
+            value={this.props.availableFilters.flowerTypes[i]}
+            onClick={() => {this.handleEditFlowerType(flower)}}
+          /> {this.props.availableFilters.flowerTypes[i]}
+        </li>
       );
     }
     return (
@@ -78,6 +89,30 @@ class Shelf extends Component {
             }
           ],
           image:'lily_static.jpeg'
+        }, {
+          title: "Lily Celebration",
+          description: 'With classic floral colors including red roses and pink lilies, the Rose and Lily Celebration is a wonderful gift to send to a friend or family member for a birthday, get well or anniversary.',
+          location: '7033 N Moselle Ave, Chicago, IL 60646',
+          startTime: new Date('2019-04-21T10:00:00-05:00'),
+          endTime: new Date('2019-04-21T12:00:00-05:00'),
+          originalDate: new Date('2019-04-16'),
+          numberOfFlowers: 60,
+          flowers: [
+            {
+              type: "Roses",
+              number: 15
+            }, {
+              type: "Lilies",
+              number: 20
+            }, {
+              type: "Waxflowers",
+              number: 15
+            }, {
+              type: "Alstroemeria",
+              number: 10
+            }
+          ],
+          image:'another_static.jpg'
         }
       ],
       filters: {
@@ -87,15 +122,20 @@ class Shelf extends Component {
         flowerTypes: []
       }
     };
-    this.addFlowerType = this.addFlowerType(this);
-    this.removeFlowerType = this.removeFlowerType(this);
+    this.editFlowerType = this.editFlowerType.bind(this);
   }
-  addFlowerType() {
+  editFlowerType(flower) {
+    // If flower is being filtered already, remove it, else add it
     let stateCopy = this.state;
-  }
-  removeFlowerType() {
-    let stateCopy = this.state;
-  }
+    if (this.state.filters.flowerType.findIndex((tflower) => {return tflower == flower;}) == -1) { // Add it to the filtering
+      stateCopy.filters.flowerType.push(flower);
+    }
+    else { // Remove it from the filtering
+      let position = this.state.filters.flowerType.findIndex((tflower) => {return tflower == flower;});
+      stateCopy.filters.flowerType.splice(position,1);
+    }
+    this.setState(stateCopy);
+  };
   componentDidMount = () => { // This function gets a list of available flower types from the catalog
     for (let i = 0; i < this.state.catalog.length; i++) {
       for (let j = 0; j < this.state.catalog[i].flowers.length; j++) {
@@ -119,7 +159,11 @@ class Shelf extends Component {
     
     return (
       <div className="shelf">
-        <Filters filters={this.state.filters} availableFilters={this.state.availableFilters}/>
+        <Filters
+          filters={this.state.filters}
+          availableFilters={this.state.availableFilters}
+          onEditFlowerType={this.editFlowerType}
+        />
         {rows}
       </div>
     );
