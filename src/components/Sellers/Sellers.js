@@ -123,8 +123,6 @@ class Sellers extends Component {
               disabledDays={{before: new Date()}}
             />
             <br />
-            // Is there a reason why we have two submit buttons?
-            <input type="submit" value="Submit" />
           </form>
 
           <div className="helperbuttons">
