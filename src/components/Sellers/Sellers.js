@@ -116,6 +116,9 @@ class Sellers extends Component {
               </div>
             ))}
             <p id="addFlowers" onClick={this.addFlowerType}> + Add another flower type </p>
+            <p className="saved"> Add any other important information below </p>
+            <textarea rows="1" cols="50" wrap="physical" name="description"></textarea>
+            <br />
             <DayPicker
               onDayClick={this.handleDateSelection}
               month={this.state.startTime}
