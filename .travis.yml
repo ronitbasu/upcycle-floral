@@ -1,20 +1,19 @@
 language: node_js
 node_js:
-- ‘10’
+- "‘10’"
 - 10.15.0
 
 cache:
- directories:
-   - $HOME/.npm
+  directories:
+  - "$HOME/.npm"
 
 install:
- - npm ci
+- npm ci
 
 script:
- - CI=false npm run build
+- CI=false npm run build
 
 deploy:
- provider: firebase
- skip_cleanup: true
- token:
-   secure: vERy+Ec9jpIB1AT9kMNs5LFVh0auMZPtlPWDzzDI7RJqw/BZGghN9/O/5I8vcciCPhkrhNegeqELA4fRP71MjXO/qTtsEt9ylGBMUeUbkQQu8GZwGAPLfKtSRef3Znan3Suqwdr0tIrf/xJRDEmYCLdjlf6gjZXmlgAZTrvkiW9Bfh1jqSxca1R6PVM3PLUJ97CX1Ted7WUtdrXP378mzfmoBth5eFkjVhDxLF7BH3ef8DeWzAbBP+nsQPigTLtFQWFyFTxSugRwL43uhE6b4Qvfbr4ZufSNy7jAunEl+9AHxdBpCnkaLourRyCN3nAChZgXqNWCci7J3TtDA0yX6c1+7oj0mcdLyGVYOKoRyZD7N//uwYFCx7K+794ePRCeAMhBIxaTFQWPAMR+fksw+yqtTEUxybOIbmehRpwWiOYYdu5287bHE1V6PPY3pVR9RHdDHi8S8qNZZ3uIusRXMcfdMQ6R7sJjBS51QQcNKYxJSFx1RF/9uXQS9POde+9Vw+n5yoPs1hD1wOo3BLhSuxH0OqUcFWx5HLSdBRXU0uXY6Ykz/PM8/EQ25kVYzqdiZRKXThJlbzdiU/8JC1M1cAN9eOT1OIlmNYL19joO7mxQzplXeshbjduTmljU8sHp7CW0bxG+VRuj8BijiObUDAg05diNY0k2D0wAVAqVd0A=
+  provider: firebase
+  token:
+    secure: BxD7IQ/CtDun4gY9IIL//0gTmerT3yxrTSRRw5TkXBL6uRVgo67zWcJVNaAdsCr0eNjtccSeaSDr04/0XemH45PsYcB76TTiw0KsBXOZ4TuM5eaxHoxkRqxA7+xhEquutISBshFQm1TaWGiVtVAFfNEO77X6Bsuk4MxHedJDBMl4PRf7q+yWbIolEJjb3lC3ZE/BcXOkNRn502ZArqIOr6UBpRi7RYfGw75xQDCyraEoLnUXZxPhpBSIg6cQjzBpC4/FKl4oU2UaAUbbYUqkxT0VEyATQaaLM/Vgg1luqnuO+wv6JGlhMChFdHcRok57JmRku6lYg5rL4z0Nq4rxak7G1iiDeIy5rt/4aLfiqEyuj8Hoqy6vuV0XV3CVeB+fK2fuE/J2p6j3ytitOxRTsNvAUER9X+T/UmwVqMrXWuBtH3SX1i0R9na2ovq/Xc03PvP5MbiWg1kn/zv4sTUkZlEFHAuwm1hWoRcIg98CVd7yk5MLhQBy0nRT1YFnwIfJ3ZuPW3xsavlQsvVNRextFlbAwuR0wvhuhaC5Ftmlpm5EsD7+0gpLv6ageRDgSvCt5/o5tET5Y1hlaso7tzD4Ds7gnRSNjy/+zoCWJ00iJqhfG5vWMsygfH2nlSFzlRNbishUaxeUWPRr8srSkRcUzb/vNu7Tv33Qda32AOC0Af8=
