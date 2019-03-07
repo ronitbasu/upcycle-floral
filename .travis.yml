@@ -1,17 +1,20 @@
 language: node_js
 node_js:
-- '10'
+- ‘10’
+- 10.15.0
+
 cache:
-  directories:
-  - "$HOME/.npm"
+ directories:
+   - $HOME/.npm
+
 install:
-- npm ci
+ - npm ci
+
 script:
-- CI=false npm run build
+ - CI=false npm run build
+
 deploy:
-  provider: firebase
-  skip_cleanup: true
-  token: 1/FzB7eoG3yxkjn6meK0jhBy22RXQmxGKst6oQx186z84
-env:
-  global:
-    secure: vERy+Ec9jpIB1AT9kMNs5LFVh0auMZPtlPWDzzDI7RJqw/BZGghN9/O/5I8vcciCPhkrhNegeqELA4fRP71MjXO/qTtsEt9ylGBMUeUbkQQu8GZwGAPLfKtSRef3Znan3Suqwdr0tIrf/xJRDEmYCLdjlf6gjZXmlgAZTrvkiW9Bfh1jqSxca1R6PVM3PLUJ97CX1Ted7WUtdrXP378mzfmoBth5eFkjVhDxLF7BH3ef8DeWzAbBP+nsQPigTLtFQWFyFTxSugRwL43uhE6b4Qvfbr4ZufSNy7jAunEl+9AHxdBpCnkaLourRyCN3nAChZgXqNWCci7J3TtDA0yX6c1+7oj0mcdLyGVYOKoRyZD7N//uwYFCx7K+794ePRCeAMhBIxaTFQWPAMR+fksw+yqtTEUxybOIbmehRpwWiOYYdu5287bHE1V6PPY3pVR9RHdDHi8S8qNZZ3uIusRXMcfdMQ6R7sJjBS51QQcNKYxJSFx1RF/9uXQS9POde+9Vw+n5yoPs1hD1wOo3BLhSuxH0OqUcFWx5HLSdBRXU0uXY6Ykz/PM8/EQ25kVYzqdiZRKXThJlbzdiU/8JC1M1cAN9eOT1OIlmNYL19joO7mxQzplXeshbjduTmljU8sHp7CW0bxG+VRuj8BijiObUDAg05diNY0k2D0wAVAqVd0A=
+ provider: firebase
+ skip_cleanup: true
+ token:
+   secure: vERy+Ec9jpIB1AT9kMNs5LFVh0auMZPtlPWDzzDI7RJqw/BZGghN9/O/5I8vcciCPhkrhNegeqELA4fRP71MjXO/qTtsEt9ylGBMUeUbkQQu8GZwGAPLfKtSRef3Znan3Suqwdr0tIrf/xJRDEmYCLdjlf6gjZXmlgAZTrvkiW9Bfh1jqSxca1R6PVM3PLUJ97CX1Ted7WUtdrXP378mzfmoBth5eFkjVhDxLF7BH3ef8DeWzAbBP+nsQPigTLtFQWFyFTxSugRwL43uhE6b4Qvfbr4ZufSNy7jAunEl+9AHxdBpCnkaLourRyCN3nAChZgXqNWCci7J3TtDA0yX6c1+7oj0mcdLyGVYOKoRyZD7N//uwYFCx7K+794ePRCeAMhBIxaTFQWPAMR+fksw+yqtTEUxybOIbmehRpwWiOYYdu5287bHE1V6PPY3pVR9RHdDHi8S8qNZZ3uIusRXMcfdMQ6R7sJjBS51QQcNKYxJSFx1RF/9uXQS9POde+9Vw+n5yoPs1hD1wOo3BLhSuxH0OqUcFWx5HLSdBRXU0uXY6Ykz/PM8/EQ25kVYzqdiZRKXThJlbzdiU/8JC1M1cAN9eOT1OIlmNYL19joO7mxQzplXeshbjduTmljU8sHp7CW0bxG+VRuj8BijiObUDAg05diNY0k2D0wAVAqVd0A=
